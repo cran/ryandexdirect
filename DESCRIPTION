@@ -1,8 +1,8 @@
 Package: ryandexdirect
 Type: Package
 Title: Load Data From 'Yandex Direct'
-Version: 3.1.5
-Date: 2019-04-30
+Version: 3.1.6
+Date: 2019-05-31
 Description: Load data from 'Yandex Direct' API V5 
     <https://tech.yandex.ru/direct/doc/dg/concepts/about-docpage/> into R.
 	Provide function for load lists of campaings, ads, keywords and other 
@@ -21,10 +21,11 @@ BugReports: https://github.com/selesnow/ryandexdirect/issues
 URL: https://selesnow.github.io/ryandexdirect
 Imports: utils, httr, bitops, jsonlite, xml2, data.table, readr,
         magrittr, dplyr
-Suggests: knitr, rmarkdown
+Suggests: knitr, rmarkdown, kableExtra
 Encoding: UTF-8
 Language: ru
+VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2019-04-30 07:57:01 UTC; Alsey
+Packaged: 2019-06-04 06:50:00 UTC; Alsey
 Repository: CRAN
-Date/Publication: 2019-04-30 16:30:06 UTC
+Date/Publication: 2019-06-04 07:10:03 UTC

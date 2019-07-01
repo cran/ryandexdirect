@@ -1,111 +1,177 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# ryandexdirect - РїР°РєРµС‚ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ API РЇРЅРґРµРєСЃ.Р”РёСЂРµРєС‚ РІРµСЂСЃРёРё 4, Live 4 Рё 5.
+# ryandexdirect - пакет для работы с API Яндекс.Директ версии 4, Live 4 и 5. <a href='https:/selesnow.github.io/ryandexdirect'><img src='https://raw.githubusercontent.com/selesnow/ryandexdirect/master/inst/ryandexdirect.png' align="right" height="139" /></a>
 
-## РљСЂР°С‚РєРѕРµ РѕРїРёСЃР°РЅРёРµ.
+## Краткое описание.
 
-РџР°РєРµС‚ ryandexdirect РїСЂРµРґРЅР°Р·РЅР°С‡РµРЅ РґР»СЏ
-Р·Р°РіСЂСѓР·РєРё РґР°РЅРЅС‹С… РёР· РЇРЅРґРµРєСЃ
-Р”РёСЂРµРєС‚ РІ R, СЃ РїРѕРјРѕС‰СЊСЋ С„СѓРЅРєС†РёР№
-РґР°РЅРЅРѕРіРѕ РїР°РєРµС‚Р° РІС‹ РјРѕР¶РµС‚Рµ
-СЂР°Р±РѕС‚Р°С‚СЊ СЃ РїРµСЂРµС‡РёСЃР»РµРЅРЅС‹РјРё
-РЅРёР¶Рµ СЃРµСЂРІРёСЃР°РјРё Рё СЃР»СѓР¶Р±Р°РјРё API РЇРЅРґРµРєСЃР°
-СЃ РїРѕРјРѕС‰СЊСЋ РіРѕС‚РѕРІС‹С… С„СѓРЅРєС†РёР№, РЅРµ
-СѓРіР»СѓР±Р»СЏСЏСЃСЊ РїСЂРё СЌС‚РѕРј РІ
-РґРѕРєСѓРјРµРЅС‚Р°С†РёСЋ РїРѕ СЂР°Р±РѕС‚Рµ СЃ СЌС‚РёРјРё
-API СЃРµСЂРІРёСЃР°РјРё.
+Пакет ryandexdirect предназначен для загрузки данных из Яндекс Директ в R, с помощью функций данного пакета вы можете работать с перечисленными ниже сервисами и службами API Яндекса с помощью готовых функций, не углубляясь при этом в документацию по работе с этими API сервисами.
 
-  - [РЎРµСЂРІРёСЃ
-    Reports](https://tech.yandex.ru/direct/doc/reports/reports-docpage/)
-    - РџСЂРµРґРЅР°Р·РЅР°С‡РµРЅ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ
-    СЃС‚Р°С‚РёСЃС‚РёРєРё РїРѕ Р°РєРєР°СѓРЅС‚Сѓ
-    СЂРµРєР»Р°РјРѕРґР°С‚РµР»СЏ.
-  - [API Р”РёСЂРµРєС‚Р° РІРµСЂСЃРёРё 4 Рё
-    Live 4](https://tech.yandex.ru/direct/doc/dg-v4/concepts/About-docpage/)
-    - Р§РµСЂРµР· API РІРЅРµС€РЅРёРµ РїСЂРёР»РѕР¶РµРЅРёСЏ
-    РґРѕР±Р°РІР»СЏСЋС‚ Рё СЂРµРґР°РєС‚РёСЂСѓСЋС‚
-    РєР°РјРїР°РЅРёРё, РѕР±СЉСЏРІР»РµРЅРёСЏ, С„СЂР°Р·С‹,
-    Р·Р°РґР°СЋС‚ СЃС‚Р°РІРєРё, РїРѕР»СѓС‡Р°СЋС‚
-    СЃС‚Р°С‚РёСЃС‚РёРєСѓ РїРѕРєР°Р·РѕРІ.
-  - [API Р”РёСЂРµРєС‚Р°
-    РІРµСЂСЃРёРё 5](https://tech.yandex.ru/direct/doc/dg/concepts/about-docpage/)
-    - Р§РµСЂРµР· API РІРЅРµС€РЅРёРµ РїСЂРёР»РѕР¶РµРЅРёСЏ
-    РґРѕР±Р°РІР»СЏСЋС‚ Рё СЂРµРґР°РєС‚РёСЂСѓСЋС‚
-    РєР°РјРїР°РЅРёРё, РѕР±СЉСЏРІР»РµРЅРёСЏ, С„СЂР°Р·С‹,
-    Р·Р°РґР°СЋС‚ СЃС‚Р°РІРєРё, РїРѕР»СѓС‡Р°СЋС‚
-    СЃС‚Р°С‚РёСЃС‚РёРєСѓ РїРѕРєР°Р·РѕРІ.
++ [Сервис Reports](https://tech.yandex.ru/direct/doc/reports/reports-docpage/) - Предназначен для получения статистики по аккаунту рекламодателя.
++ [API Директа версии 4 и Live 4](https://tech.yandex.ru/direct/doc/dg-v4/concepts/About-docpage/) - Через API внешние приложения добавляют и редактируют кампании, объявления, фразы, задают ставки, получают статистику показов.
++ [API Директа версии 5](https://tech.yandex.ru/direct/doc/dg/concepts/about-docpage/) - Через API внешние приложения добавляют и редактируют кампании, объявления, фразы, задают ставки, получают статистику показов.
 
-РџР°РєРµС‚ РїРѕР·РІРѕР»СЏРµС‚ РІР°Рј РІС‹РїРѕР»РЅСЏС‚СЊ
-СЃР»РµРґСѓСЋС‰РёРµ РґРµР№СЃС‚РІРёСЏ:
+Пакет позволяет вам выполнять следующие действия:
 
-1.  РђРІС‚РѕСЂРёР·РѕРІС‹РІР°С‚СЊСЃСЏ РІ API.
-2.  РџРѕР»СѓС‡Р°С‚СЊ СЃРїРёСЃРѕРє СЂР°Р·Р»РёС‡РЅС‹С… РѕР±СЉРµРєС‚РѕРІ
-    СЂРµРєР»Р°РјРЅРѕРіРѕ РєР°Р±РёРЅРµС‚Р°, СЂРµРєР»Р°РјРЅС‹С…
-    РєР°РјРїР°РЅРёР№, РіСЂСѓРїРї РѕР±СЉСЏРІР»РµРЅРёР№,
-    РѕР±СЉСЏРІР»РµРЅРёР№, РґР»СЏ Р°РіРµРЅС‚СЃРєРёС…
-    Р°РєРєР°СѓРЅС‚РѕРІ РјРѕР¶РЅРѕ Р·Р°РїСЂР°С€РёРІР°С‚СЊ
-    СЃРїРёСЃРѕРє РєР»РёРµРЅС‚РѕРІ, Рё РїР°СЂР°РјРµС‚СЂС‹
-    РєР°Р¶РґРѕРіРѕ РєР»РёРµРЅС‚Р°.
-3.  РЈРїСЂР°РІР»СЏС‚СЊ РїРѕРєР°Р·Р°РјРё РЅР° СѓСЂРѕРІРЅРµ
-    СЂРµРєР»Р°РјРЅС‹С… РєР°РјРїР°РЅРёР№, РіСЂСѓРїРї
-    РѕР±СЉСЏРІР»РµРЅРёР№ Рё РѕР±СЉСЏРІР»РµРЅРёР№.
-4.  Р—Р°РіСЂСѓР¶Р°С‚СЊ СЃС‚Р°С‚РёСЃС‚РёРєСѓ.
+1. Авторизовываться в API.
+2. Получать список различных объектов рекламного кабинета, рекламных кампаний, групп объявлений, объявлений, для агентских аккаунтов можно запрашивать список клиентов, и параметры каждого клиента.
+3. Управлять показами на уровне рекламных кампаний, групп объявлений и объявлений.
+4. Загружать статистику.
+5. Упаравлять ставками ключевых слов и автотаргетингов.
 
-## РЈСЃС‚Р°РЅРѕРІРєР° РїР°РєРµС‚Р° ryandexdirect.
+## Установка пакета ryandexdirect.
 
-РЈСЃС‚Р°РЅРѕРІРєР° РїР°РєРµС‚Р° РѕСЃСѓС‰РµСЃС‚РІР»СЏРµС‚СЃСЏ РёР·
-СЂРµРїРѕР·РёС‚РѕСЂРёСЏ CRAN
+Установка пакета осуществляется из репозитория CRAN 
 
 `install.packages("ryandexdirect")`
 
-РёР»Рё GitHub, РґР»СЏ СЌС‚РѕРіРѕ СЃРЅР°С‡Р°Р»Р° С‚СЂРµР±СѓРµС‚СЃСЏ
-СѓСЃС‚Р°РЅРѕРІРёС‚СЊ Рё РїРѕРґРєР»СЋС‡РёС‚СЊ РїР°РєРµС‚ devtools.
+или GitHub, для этого сначала требуется установить и подключить пакет devtools.
 
 `install.packages("devtools")`
 
 `library(devtools)`
 
-РџРѕСЃР»Рµ С‡РµРіРѕ РјРѕР¶РЅРѕ СѓСЃС‚Р°РЅР°РІР»РёРІР°С‚СЊ РїР°РєРµС‚
-ryandexdirect.
+После чего можно устанавливать пакет ryandexdirect.
 
 `install_github('selesnow/ryandexdirect')`
 
-### Р’РёРЅСЊРµС‚РєРё
+### Пример кода
+```r
+# Установка пакетов
+install.packages("ryandexdirect")
 
-РќР° РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚ РІ РїР°РєРµС‚Рµ `ryandexdirect`
-РґРѕСЃС‚СѓРїРЅС‹ 2 РІРёРЅСЊРµС‚РєРё.
+# Подключение пакета
+library(ryandexdirect)
 
-1.  Р—Р°РіСЂР·РєР° СЃС‚Р°С‚РёСЃС‚РёРєРё РёР· API РЇРЅРґРµРєСЃ
-    Р”РёСЂРµРєС‚: `vignette("yandex-direct-get-statistic",
-    package = "ryandexdirect")`
-2.  РђРІС‚РѕСЂРёР·Р°С†РёСЏ Рё СЂР°Р±РѕС‚Р° СЃ СѓС‡С‘С‚РЅС‹РјРё
-    РґР°РЅРЅС‹РјРё: `vignette("yandex-direct-auth", package =
-    "ryandexdirect")`
+# Авторизация 
+yadirAuth(Login     = "my_yandex_login",  # логин пользователя Яндекс.Директ
+          TokenPath = "C:/direct/tokens") # путь к папаке в которой будет храниться файл с учётными данными
+	  
+# ###################################################
+# Загрузка различных объектов из рекламного аккаунта
+# ###################################################
 
-### РЎСЃС‹Р»РєРё
+# Список рекламных кампаний
+camp <- yadirGetCampaign(Logins    = "my_yandex_login",
+                         TokenPath = "C:/direct/tokens",
+                         States    = "ON",
+                         Types     = "TEXT_CAMPAIGN")
 
-1.  [РџРѕР»РЅР°СЏ, РѕС„РёС†РёР°Р»СЊРЅР°СЏ РґРѕРєСѓРјРµРЅС‚Р°С†РёСЏ РїРѕ
-    СЂР°Р±РѕС‚Рµ СЃ РїР°РєРµС‚РѕРј
-    ryandexdirect](https://selesnow.github.io/ryandexdirect/).
-2.  Р‘Р°Рі СЂРµРїРѕСЂС‚С‹, РїСЂРµРґР»РѕР¶РµРЅРёСЏ РїРѕ
-    РґРѕСЂР°Р±РѕС‚РєРµ Рё СѓР»СѓС‡С€РµРЅРёСЋ
-    С„СѓРЅРєС†РёРѕРЅР°Р»Р° ryandexdirect РѕСЃС‚Р°РІР»СЏС‚СЊ
-    [С‚СѓС‚](https://github.com/selesnow/ryandexdirect/issues).
-3.  [РЎРїРёСЃРѕРє
-    СЂРµР»РёР·РѕРІ](https://github.com/selesnow/ryandexdirect/releases).
-4.  [РўРµР»РµРіСЂР°РјРј РєР°РЅР°Р»
-    R4marketing](https://t.me/R4marketing).
-5.  [Р“СЂСѓРїРїР° РІ Р’РєРѕРЅС‚Р°РєС‚Рµ](https://vk.com/data_club).
+# Список ключевых слов
+kw <- yadirGetKeyWords(Login       = "my_yandex_login",
+                       TokenPath   = "C:/direct/tokens",
+                       CampaignIds = camp$Id[1:5],
+                       States      = "ON")
 
-### РђРІС‚РѕСЂ РїР°РєРµС‚Р°
+# Список групп объявлений
+adgroups <- yadirGetAdGroups(Login       = "my_yandex_login",
+                             TokenPath   = "C:/direct/tokens",
+                             CampaignIds = camp$Id[c(1,2)],
+                             Types       = "TEXT_AD_GROUP",
+                             Statuses    = c("ACCEPTED", "MODERATION"))
 
-РђР»РµРєСЃРµР№ РЎРµР»РµР·РЅС‘РІ, Head of analytics dept. at
-[Netpeak](https://netpeak.net) <Br>email: <selesnow@gmail.com>
-<Br>skype: selesnow <Br>facebook:
-[facebook.com/selesnow](https://facebook.com/selesnow) <Br>blog:
-[alexeyseleznev.wordpress.com](https://alexeyseleznev.wordpress.com/)
+# Список объявлений
+ads <- yadirGetAds(Login       = "my_yandex_login",
+                   TokenPath   = "C:/direct/tokens",
+                   CampaignIds = camp$Id[c(1,2)])
 
-### CRAN
+# Список быстрых ссылок 
+links <- yadirGetSiteLinks(Login       = "my_yandex_login",
+                           TokenPath   = "C:/direct/tokens")
 
+# ###################################################
+# Загрузка справочной информации
+# ###################################################
+
+# Справочник валют
+currency <- yadirGetDictionary(DictionaryName = "Currencies",
+                               Language       = "en",
+                               Login          = "my_yandex_login",
+                               TokenPath      = "C:/direct/tokens")
+
+# Георгафический справочник
+regions <- yadirGetDictionary(DictionaryName = "GeoRegions",
+                              Language       = "ru",
+                              Login          = "my_yandex_login",
+                              TokenPath      = "C:/direct/tokens")
+
+# ###################################################
+# Загрузка статистики
+# ###################################################
+
+# простейший отчёт за прошлый месяц
+simple_report <- yadirGetReport(DateRangeType = "LAST_MONTH",  # относительный период
+                                FieldNames    = c("Date", "Clicks", "Impressions"),
+                                Login         = "my_yandex_login",
+                                TokenPath     = "C:/direct/tokens")
+
+# отчёт по конверсиям с моделью аттрибуции за статичный период
+attribution_report <- yadirGetReport(DateFrom          = "2018-11-15", # статичный период, дата начала
+                                     DateTo            = "2018-11-20", # статичный период, дата завершения
+                                     FieldNames        = c("Date", 
+                                                           "Conversions"),
+                                     Goals             = c(27475434, 38234732),
+                                     AttributionModels = c("LC", "FC"),
+                                     Login             = "my_yandex_login",
+                                     TokenPath         = "C:/direct/tokens")
+
+# отчёт с применением фильтрации
+filtring_report <- yadirGetReport(DateRangeType = "LAST_30_DAYS",
+                                  FieldNames    = c("Date", "Clicks", "Impressions"),
+                                  FilterList    = c("Conversions GREATER_THAN 1", 
+                                                    "Impressions LESS_THAN 3500"),
+                                  Login         = "my_yandex_login",
+                                  TokenPath     = "C:/direct/tokens")
+
+# ###################################################
+# Управление ставками
+# ###################################################
+
+# запрашиваем ставки
+bids  <- yadirGetKeyWordsBids(kw$Id)
+
+# запрашиваем ставки и данные торго на поиске
+bids_search <- yadirGetKeyWordsBids(kw$Id,
+                                    AuctionBids = "search")
+                                    
+# запрашиваем ставки и данные торго в сетях
+network_bids <- yadirGetKeyWordsBids(kw$Id,
+                                     AuctionBids = "network")
+
+# запрашиваем список рекламных кампаний
+camp <- yadirGetCampaign()
+
+# меняем ставки
+setbid     <- yadirSetKeyWordsBids(CampaignIds = camp$Id[1],
+                                   SearchBid   = 9)
+
+# меняем ставки
+autosetbids <- yadirSetAutoKeyWordsBids(KeywordIds = kw$Id,
+                                        TargetTrafficVolume = 50)
+```
+
+### Виньетки
+Пакет имеет подробные виньетки отдельно по каждой из своих возможностей, в которой наиболее подробно описаны детали работы с его функционалом. На данный момент в пакете `ryandexdirect` доступны 3 виньетки.
+
+1. Загрзка статистики из API Яндекс Директ: `vignette("yandex-direct-get-statistic", package = "ryandexdirect")`
+2. Авторизация и работа с учётными данными: `vignette("yandex-direct-auth", package = "ryandexdirect")`
+3. Управление ставками ключевых слов в Яндекс Директ: `vignette("yandex-direct-keyword-bids", package = "ryandexdirect")`
+
+### Ссылки
+1. [Полная, официальная документация по работе с пакетом ryandexdirect](https://selesnow.github.io/ryandexdirect/).
+2. Баг репорты, предложения по доработке и улучшению функционала ryandexdirect оставлять [тут](https://github.com/selesnow/ryandexdirect/issues). 
+3. [Список релизов](https://github.com/selesnow/ryandexdirect/releases).
+4. [Телеграмм канал R4marketing](https://t.me/R4marketing).
+5. [Группа в Вконтакте](https://vk.com/data_club).
+
+### Автор пакета
+Алексей Селезнёв, Head of analytics dept. at [Netpeak](https://netpeak.net)
+<Br>email: selesnow@gmail.com
+<Br>skype: selesnow
+<Br>facebook: [facebook.com/selesnow](https://facebook.com/selesnow)
+<Br>blog: [alexeyseleznev.wordpress.com](https://alexeyseleznev.wordpress.com/)
+
+### Бейджи
 [![Rdoc](http://www.rdocumentation.org/badges/version/ryandexdirect)](http://www.rdocumentation.org/packages/ryandexdirect)
+[![rpackages.io rank](http://www.rpackages.io/badge/ryandexdirect.svg)](http://www.rpackages.io/package/ryandexdirect)
+[![](https://cranlogs.r-pkg.org/badges/ryandexdirect)](https://cran.r-project.org/package=ryandexdirect)

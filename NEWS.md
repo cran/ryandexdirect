@@ -1,3 +1,11 @@
+# ryandexdirect 3.2.0
+* В пакет добавлены функции для управления ставками ключевых слов
+    * yadirGetKeyWordsBids
+	* yadirSetKeyWordsBids
+	* yadirSetAutoKeyWordsBids
+
+Описание релиза на [GitHub](https://github.com/selesnow/ryandexdirect/releases/tag/3.2.0).
+
 # ryandexdirect 3.1.6
 * В пакет добавлены виньетки
     * Подробная виньетка о загрузке статистики из рекламных аккаунтов Яндекс Директ: `vignette("yandex-direct-get-statistic", package = "ryandexdirect")`
@@ -5,10 +13,14 @@
 * Для обработки лимита в 1 000 000 строк в функцию `yadirGetReport` добавлен аргумент FetchBy. Подробнее об этом можно узнать из описания релиза на GitHub.
 * Исправлена проблема, которая возникала при запросе статистики сразу из нескольких клиентских аккаунтов.
 
+Описание релиза на [GitHub](https://github.com/selesnow/ryandexdirect/releases/tag/3.1.6).
+
 # ryandexdirect 3.1.4
 * В результат возвращаемый функцией `yadirGetCampaign` добалены следующие поля:
     * SearchBidStrategyType - Тип стратегии показа на поиске
     * NetworkBidStrategyType - Тип стратегии показа в сетях
+	
+Описание релиза на [GitHub](https://github.com/selesnow/ryandexdirect/releases/tag/3.1.5).
 
 # ryandexdirect 3.1.1
 * Исправлена ошибка в функции `yadirAuth`, возникающая после обновления просроченного токена.

@@ -157,6 +157,21 @@ autosetbids <- yadirSetAutoKeyWordsBids(KeywordIds = kw$Id,
 2. Авторизация и работа с учётными данными: `vignette("yandex-direct-auth", package = "ryandexdirect")`
 3. Управление ставками ключевых слов в Яндекс Директ: `vignette("yandex-direct-keyword-bids", package = "ryandexdirect")`
 
+### Статьи о пакете ryandexdirect
++ [ryandexdirect и выгрузка данных из Яндекс.Директ в RStudio](https://osipenkov.ru/ryandexdirect-direkt-r-step1/)
++ [Как ускорить работу с API на языке R с помощью параллельных вычислений, на примере API Яндекс.Директ (Часть 1)](https://habr.com/ru/post/437078/)
++ [Как ускорить работу с API на языке R с помощью параллельных вычислений, на примере API Яндекс.Директ (Часть 2)](https://selesnow.github.io/library/)
++ [Насколько безопасно использовать R пакеты для работы с API рекламных систем](https://habr.com/post/430888/)
++ [ryandexdirect 3.0.0 — обновлённый R клиент для работы с API Яндекс Директ ](https://alexeyseleznev.wordpress.com/2018/05/16/ryandexdirect-3-0-0-%D0%BE%D0%B1%D0%BD%D0%BE%D0%B2%D0%BB%D1%91%D0%BD%D0%BD%D1%8B%D0%B9-r-%D0%BA%D0%BB%D0%B8%D0%B5%D0%BD%D1%82-%D0%B4%D0%BB%D1%8F-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B-%D1%81-api/)
++ [Что такое язык R и как работать с API рекламных систем Google AdWords и Яндекс.Директ с его помощью](https://www.owox.ru/blog/articles/r-language-and-api-of-ad-systems/)
++ [Как загрузить статистику из рекламных систем в Google BigQuery](https://ppc.world/articles/kak-zagruzit-statistiku-iz-reklamnyh-sistem-v-google-bigquery/)
++ [Облако минус слов для Яндекс Директ](https://esliklientov.net/articles/%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%BA%D1%81%D1%82%D0%BD%D0%B0%D1%8F-%D1%80%D0%B5%D0%BA%D0%BB%D0%B0%D0%BC%D0%B0/%D1%8F%D0%BD%D0%B4%D0%B5%D0%BA%D1%81-%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82/%D0%BE%D0%B1%D0%BB%D0%B0%D0%BA%D0%BE-%D0%BC%D0%B8%D0%BD%D1%83%D1%81-%D1%81%D0%BB%D0%BE%D0%B2-%D0%B4%D0%BB%D1%8F-%D1%8F%D0%BD%D0%B4%D0%B5%D0%BA%D1%81-%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82.html)
++ [Подключение Power BI к Yandex.Metrika](http://pm-partner.ru/articles/2017/podkluchenie-power-bi-yandex-metrika/)
++ [Как связать Яндекс.Директ с Microsoft Power BI](https://netpeak.net/ru/blog/kak-svyazat-yandeks-direkt-s-microsoft-power-bi/)
+
+### Вебинары
++ [Как маркетологу избавиться от рутины с помощью языка R и наконец то заняться маркетингом](https://www.youtube.com/watch?v=Kh-wyU-VXRU)
+
 ### Ссылки
 1. [Полная, официальная документация по работе с пакетом ryandexdirect](https://selesnow.github.io/ryandexdirect/).
 2. Баг репорты, предложения по доработке и улучшению функционала ryandexdirect оставлять [тут](https://github.com/selesnow/ryandexdirect/issues). 

@@ -83,7 +83,13 @@ yadirGetKeyWordsBids <- function(KeywordIds    = NULL,
   
   # start of coleccting
   for (part_of_id in id_parts) {
-  
+    
+    if ( length(part_of_id) == 1 ) {
+    
+	part_of_id <- list(part_of_id)
+	 
+    }	
+	
     # detect ids and object
     if ( object == "keywords" ) {
       query_list$params$SelectionCriteria$KeywordIds  <- part_of_id

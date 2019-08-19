@@ -1,3 +1,7 @@
+# ryandexdirect 3.2.1
+* В `yadirGetKeyWordsBids` исправлена ошибка возникающая при запросе данных по 1 ключевому слову.
+* В `yadirSetAutoKeyWordsBids` исправлена ошибка `object 'StrategyPriority' not found`.
+
 # ryandexdirect 3.2.0
 * В пакет добавлены функции для управления ставками ключевых слов
     * yadirGetKeyWordsBids

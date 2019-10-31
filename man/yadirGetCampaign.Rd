@@ -1,4 +1,4 @@
-\name{yadirGetCampaignList}
+\name{yadirGetCampaign}
 \alias{yadirGetCampaignList}
 \alias{yadirGetCampaign}
 \title{Get Campaigns List}

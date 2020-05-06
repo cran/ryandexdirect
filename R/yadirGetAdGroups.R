@@ -2,10 +2,10 @@ yadirGetAdGroups <- function(CampaignIds   = NULL,
                              Ids           = NA, 
                              Types         = c("TEXT_AD_GROUP" ,"MOBILE_APP_AD_GROUP" ,"DYNAMIC_TEXT_AD_GROUP"),
                              Statuses      = c( "ACCEPTED", "DRAFT", "MODERATION", "PREACCEPTED", "REJECTED"), 
-                             Login         = NULL,
-                             AgencyAccount = NULL,
+                             Login         = getOption("ryandexdirect.user"),
+                             AgencyAccount = getOption("ryandexdirect.agency_account"),
                              Token         = NULL,
-                             TokenPath     = getwd()){
+                             TokenPath     = yadirTokenPath()){
   
   # set start time
   start_time  <- Sys.time()
@@ -41,10 +41,10 @@ yadirGetAdGroups <- function(CampaignIds   = NULL,
   
   # check ids
   if (is.null(CampaignIds)) {
-    CampaignIds <-  yadirGetCampaignList(Logins        = Login,
-                                         AgencyAccount = AgencyAccount,
-                                         Token         = Token,
-                                         TokenPath     = TokenPath)$Id
+    CampaignIds <-  yadirGetCampaign(Logins        = Login,
+                                     AgencyAccount = AgencyAccount,
+                                     Token         = Token,
+                                     TokenPath     = TokenPath)$Id
   }
   
   # convert filters to JSON

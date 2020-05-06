@@ -2,10 +2,10 @@ yadirGetAds <- function(CampaignIds   = NULL,
                         AdGroupIds    = NA,
                         Ids           = NA,
                         States        = c("OFF","ON","SUSPENDED","OFF_BY_MONITORING","ARCHIVED"),
-                        Login         = NULL,
+                        Login         = getOption("ryandexdirect.user"),
                         Token         = NULL,
-                        AgencyAccount = NULL,
-                        TokenPath     = getwd()){
+                        AgencyAccount = getOption("ryandexdirect.agency_account"),
+                        TokenPath     = yadirTokenPath()){
 
   # auth
   Token <- tech_auth(login = Login, token = Token, AgencyAccount = AgencyAccount, TokenPath = TokenPath)
@@ -13,10 +13,10 @@ yadirGetAds <- function(CampaignIds   = NULL,
   # check campaign filter
   if ( is.null(CampaignIds) ) {
     message("You dont choised any ids of campaign, adgroup or ad. Loading full campaign list.")
-    CampaignIds <-  yadirGetCampaignList(Logins        = Login,
-                                         AgencyAccount = AgencyAccount,
-                                         Token         = Token,
-                                         TokenPath     = TokenPath)$Id
+    CampaignIds <-  yadirGetCampaign(Logins        = Login,
+                                     AgencyAccount = AgencyAccount,
+                                     Token         = Token,
+                                     TokenPath     = TokenPath)$Id
   }
 
   # set start time

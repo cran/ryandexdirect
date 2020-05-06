@@ -2,11 +2,11 @@ yadirGetKeyWords <- function(CampaignIds = NULL,
                              AdGroupIds  = NA, 
                              Ids         = NA, 
                              States      = c("OFF","ON","SUSPENDED"), 
-                             WithStats   = T,
-                             Login         = NULL,
+                             WithStats   = TRUE,
+                             Login         = getOption("ryandexdirect.user"),
                              Token         = NULL,
-                             AgencyAccount = NULL,
-                             TokenPath     = getwd()){
+                             AgencyAccount = getOption("ryandexdirect.agency_account"),
+                             TokenPath     = yadirTokenPath()){
   
   
   #start time
@@ -17,10 +17,10 @@ yadirGetKeyWords <- function(CampaignIds = NULL,
   
   #check camp id
   if (is.null(CampaignIds)) {
-    CampaignIds <-  yadirGetCampaignList(Logins        = Login,
-                                         AgencyAccount = AgencyAccount,
-                                         Token         = Token,
-                                         TokenPath     = TokenPath)$Id
+    CampaignIds <-  yadirGetCampaign(Logins        = Login,
+                                     AgencyAccount = AgencyAccount,
+                                     Token         = Token,
+                                     TokenPath     = TokenPath)$Id
   }
   
   #result frame

@@ -12,7 +12,7 @@
 
 <meta name="author" content="Alexey Seleznev" />
 
-<meta name="date" content="2020-05-06" />
+<meta name="date" content="2020-06-09" />
 
 <title>Прогноз бюджета и отчёты сервиса WordStat</title>
 
@@ -20,9 +20,9 @@
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -32,14 +32,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -48,9 +50,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -301,16 +303,20 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Прогноз бюджета и отчёты сервиса WordStat</h1>
 <h4 class="author">Alexey Seleznev</h4>
-<h4 class="date">2020-05-06</h4>
+<h4 class="date">2020-06-09</h4>
 
 
 
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(ryandexdirect)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">library</span>(ryandexdirect)</span></code></pre></div>
 <div id="отчёт-wordstat" class="section level1">
 <h1>Отчёт WordStat</h1>
 <p>WordStat — это бесплатный сервис Яндекса, предназначенный для оценки пользовательского интереса к различным тематикам и подбора ключевых слов для SEO-оптимизации и контекстной рекламы.</p>
 <p>Для того, что бы получить отчёты из данного сервиса с помощью пакета <code>ryandexdirect</code> необходимо использовать функцию <code>ydirGetWordStatReport()</code>.</p>
 <p>Функция <code>ydirGetWordStatReport()</code> возвращает те же сведения, которые доступны в сервисе <a href="https://wordstat.yandex.ru/">Подбор слов</a>. Статистика рассчитывается за прошедший месяц.</p>
+<div id="видео-урок" class="section level2">
+<h2>Видео урок</h2>
+<p>Помимо данной виньетки данная тема рассмотренна в видео уроке, который доступен по <a href="https://youtu.be/g9lwjsgAhyY">ссылке</a>.</p>
+</div>
 <div id="аргументы-функции-ydirgetwordstatreport" class="section level2">
 <h2>Аргументы функции ydirGetWordStatReport</h2>
 <ul>
@@ -324,11 +330,11 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <p>В одном запросе вы можете получитьданные максимум по 10 ключевым фразам.</p>
 <p>Ключевые фразы могут содержать минус-фразы. Минус-фразу из нескольких слов следует заключить в скобки, например: <code>холодильник -морозильник -(морозильная камера) -ремонт</code>.</p>
 <p>Вы можете не указывать регион, и получить общие данные о популярности поисковых запросов.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">s_ws_rep &lt;-<span class="st"> </span><span class="kw">yadirGetWordStatReport</span>(<span class="kw">c</span>(<span class="st">&#39;купить смартфон&#39;</span>,</a>
-<a class="sourceLine" id="cb2-2" title="2">                                     <span class="st">&#39;купить сотовый телефон&#39;</span>,</a>
-<a class="sourceLine" id="cb2-3" title="3">                                     <span class="st">&#39;купить мобильный&#39;</span>,</a>
-<a class="sourceLine" id="cb2-4" title="4">                                     <span class="st">&#39;samsung -(серого цвета)&#39;</span>),</a>
-<a class="sourceLine" id="cb2-5" title="5">                                   <span class="dt">Login =</span> <span class="st">&quot;selesnow&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>s_ws_rep &lt;-<span class="st"> </span><span class="kw">yadirGetWordStatReport</span>(<span class="kw">c</span>(<span class="st">&#39;купить смартфон&#39;</span>,</span>
+<span id="cb2-2"><a href="#cb2-2"></a>                                     <span class="st">&#39;купить сотовый телефон&#39;</span>,</span>
+<span id="cb2-3"><a href="#cb2-3"></a>                                     <span class="st">&#39;купить мобильный&#39;</span>,</span>
+<span id="cb2-4"><a href="#cb2-4"></a>                                     <span class="st">&#39;samsung -(серого цвета)&#39;</span>),</span>
+<span id="cb2-5"><a href="#cb2-5"></a>                                   <span class="dt">Login =</span> <span class="st">&quot;selesnow&quot;</span>)</span></code></pre></div>
 <p>В ходе формирования и парсинга запроса в консоли вы можете наблюдать за прогрессом выполнения операции.</p>
 <pre><code>.Send report
 .Report status: Pending
@@ -355,32 +361,32 @@ For get report data x[[&#39;ReportName&#39;]]</code></pre>
 </ul>
 <p>В результате работы вы получите список, который состоит из двух таблиц: <em>SearchedWith</em> и <em>SearchedAlso</em>.</p>
 <p>Обратиться к каждой из этих таблиц можно двумя способами:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="co"># Что искали с заданными ключевыми словами</span></a>
-<a class="sourceLine" id="cb4-2" title="2">s_ws_rep<span class="op">$</span>SearchedWith</a>
-<a class="sourceLine" id="cb4-3" title="3">s_ws_rep[[<span class="st">&#39;SearchedWith&#39;</span>]]</a>
-<a class="sourceLine" id="cb4-4" title="4"></a>
-<a class="sourceLine" id="cb4-5" title="5"><span class="co"># Запросы, похожие на заданные ключевые слова</span></a>
-<a class="sourceLine" id="cb4-6" title="6">s_ws_rep<span class="op">$</span>SearchedAlso</a>
-<a class="sourceLine" id="cb4-7" title="7">s_ws_rep[[<span class="st">&#39;SearchedAlso&#39;</span>]]</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Что искали с заданными ключевыми словами</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>s_ws_rep<span class="op">$</span>SearchedWith</span>
+<span id="cb4-3"><a href="#cb4-3"></a>s_ws_rep[[<span class="st">&#39;SearchedWith&#39;</span>]]</span>
+<span id="cb4-4"><a href="#cb4-4"></a></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="co"># Запросы, похожие на заданные ключевые слова</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>s_ws_rep<span class="op">$</span>SearchedAlso</span>
+<span id="cb4-7"><a href="#cb4-7"></a>s_ws_rep[[<span class="st">&#39;SearchedAlso&#39;</span>]]</span></code></pre></div>
 <p>Образение через <code>$</code> и по имени в двойных квадратных скобках равнозначны.</p>
 <p>Если вам необходимо получить справочник проектов, и получить статистику по Москве, Санкт - Петербургу, Екатеринбург и Владивостоку, то изначально вам необходимо запросить справочник регионов с помощью функции <code>yadirGetDictionary()</code> и получить идентификаторы нужных регионов, а потом передать их в аргумент <code>GeoId</code>.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">library</span>(dplyr)</a>
-<a class="sourceLine" id="cb5-2" title="2"></a>
-<a class="sourceLine" id="cb5-3" title="3"><span class="co"># запрашиваем справочник регионов</span></a>
-<a class="sourceLine" id="cb5-4" title="4">regions &lt;-<span class="st"> </span><span class="kw">yadirGetDictionary</span>(<span class="dt">Login =</span> <span class="st">&quot;selesnow&quot;</span>)</a>
-<a class="sourceLine" id="cb5-5" title="5"></a>
-<a class="sourceLine" id="cb5-6" title="6"><span class="co"># оставляем толлько нужные регионы</span></a>
-<a class="sourceLine" id="cb5-7" title="7">rep_regions &lt;-<span class="st"> </span>regions <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb5-8" title="8"><span class="st">                  </span><span class="kw">filter</span>(GeoRegionName <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Москва&quot;</span>,</a>
-<a class="sourceLine" id="cb5-9" title="9">                                              <span class="st">&quot;Санкт-Петербург&quot;</span>,</a>
-<a class="sourceLine" id="cb5-10" title="10">                                              <span class="st">&quot;Екатеринбург&quot;</span>,</a>
-<a class="sourceLine" id="cb5-11" title="11">                                              <span class="st">&quot;Владивосток&quot;</span>))</a>
-<a class="sourceLine" id="cb5-12" title="12"></a>
-<a class="sourceLine" id="cb5-13" title="13"><span class="co"># запрашиваем отчёт</span></a>
-<a class="sourceLine" id="cb5-14" title="14">reg_ws &lt;-<span class="st"> </span><span class="kw">yadirGetWordStatReport</span>(<span class="dt">Phrases =</span> <span class="kw">c</span>(<span class="st">&#39;купить смартфон -xiaomi&#39;</span>, </a>
-<a class="sourceLine" id="cb5-15" title="15">                                             <span class="st">&#39;купить xiaomi&#39;</span>),</a>
-<a class="sourceLine" id="cb5-16" title="16">                                 <span class="dt">GeoID   =</span> rep_regions<span class="op">$</span>GeoRegionId,</a>
-<a class="sourceLine" id="cb5-17" title="17">                                 <span class="dt">Login   =</span> <span class="st">&quot;selesnow&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">library</span>(dplyr)</span>
+<span id="cb5-2"><a href="#cb5-2"></a></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="co"># запрашиваем справочник регионов</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>regions &lt;-<span class="st"> </span><span class="kw">yadirGetDictionary</span>(<span class="dt">Login =</span> <span class="st">&quot;selesnow&quot;</span>)</span>
+<span id="cb5-5"><a href="#cb5-5"></a></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="co"># оставляем толлько нужные регионы</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a>rep_regions &lt;-<span class="st"> </span>regions <span class="op">%&gt;%</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="st">                  </span><span class="kw">filter</span>(GeoRegionName <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Москва&quot;</span>,</span>
+<span id="cb5-9"><a href="#cb5-9"></a>                                              <span class="st">&quot;Санкт-Петербург&quot;</span>,</span>
+<span id="cb5-10"><a href="#cb5-10"></a>                                              <span class="st">&quot;Екатеринбург&quot;</span>,</span>
+<span id="cb5-11"><a href="#cb5-11"></a>                                              <span class="st">&quot;Владивосток&quot;</span>))</span>
+<span id="cb5-12"><a href="#cb5-12"></a></span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="co"># запрашиваем отчёт</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a>reg_ws &lt;-<span class="st"> </span><span class="kw">yadirGetWordStatReport</span>(<span class="dt">Phrases =</span> <span class="kw">c</span>(<span class="st">&#39;купить смартфон -xiaomi&#39;</span>, </span>
+<span id="cb5-15"><a href="#cb5-15"></a>                                             <span class="st">&#39;купить xiaomi&#39;</span>),</span>
+<span id="cb5-16"><a href="#cb5-16"></a>                                 <span class="dt">GeoID   =</span> rep_regions<span class="op">$</span>GeoRegionId,</span>
+<span id="cb5-17"><a href="#cb5-17"></a>                                 <span class="dt">Login   =</span> <span class="st">&quot;selesnow&quot;</span>)</span></code></pre></div>
 <p>Так же вы можете указать минус регионы, например если вы хотите получить статистику по всей России без Москвы, Санкт - Петербуруа, Екатеринбурга и Владивостока. Для этого запросите справочник регионов, сначала получите идентификатор России (225), затем идентификаторы минус регионов, и перед идентификаторами минус регинов поставьте знак ‘-’.</p>
 <p>В приведённом ниже примере кода это реализуется с помощью функции <code>mutate()</code> из пакета <code>dplyr</code>.</p>
 <pre><code>library(dplyr)
@@ -419,37 +425,37 @@ reg_ws &lt;- yadirGetWordStatReport(Phrases = c(&#39;купить смартфо
 <li>AuctionBids - Выводить ли в отчете результаты торгов — Yes/No или <code>TRUE</code> / <code>FALSE</code>. Если не задано, подразумевается No.</li>
 </ul>
 <p>Пример кода для получения прогноза с использованием всех аргументов, минус слов и минус регионов с результататми торгов:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">library</span>(dplyr)</a>
-<a class="sourceLine" id="cb7-2" title="2"></a>
-<a class="sourceLine" id="cb7-3" title="3"><span class="co"># запрашиваем справочник регионов</span></a>
-<a class="sourceLine" id="cb7-4" title="4">regions &lt;-<span class="st"> </span><span class="kw">yadirGetDictionary</span>(<span class="dt">Login =</span> <span class="st">&quot;selesnow&quot;</span>)</a>
-<a class="sourceLine" id="cb7-5" title="5"></a>
-<a class="sourceLine" id="cb7-6" title="6"><span class="co"># получаем идентификатор России</span></a>
-<a class="sourceLine" id="cb7-7" title="7">regions &lt;-<span class="st"> </span>regions <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-8" title="8"><span class="st">  </span><span class="kw">filter</span>(GeoRegionName <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Россия&quot;</span>))</a>
-<a class="sourceLine" id="cb7-9" title="9"></a>
-<a class="sourceLine" id="cb7-10" title="10"><span class="co"># получаем идентификатор минус регионов и помечаем их минусом</span></a>
-<a class="sourceLine" id="cb7-11" title="11">minus_regions &lt;-<span class="st"> </span>regions <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-12" title="12"><span class="st">  </span><span class="kw">filter</span>(GeoRegionName <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Москва&quot;</span>,</a>
-<a class="sourceLine" id="cb7-13" title="13">                              <span class="st">&quot;Санкт-Петербург&quot;</span>,</a>
-<a class="sourceLine" id="cb7-14" title="14">                              <span class="st">&quot;Екатеринбург&quot;</span>,</a>
-<a class="sourceLine" id="cb7-15" title="15">                              <span class="st">&quot;Владивосток&quot;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-16" title="16"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">GeoRegionId =</span> <span class="kw">paste0</span>(<span class="st">&quot;-&quot;</span>, GeoRegionId))</a>
-<a class="sourceLine" id="cb7-17" title="17"></a>
-<a class="sourceLine" id="cb7-18" title="18"><span class="co"># запрашиваем прогноз с результататми торгов</span></a>
-<a class="sourceLine" id="cb7-19" title="19">forecast &lt;-<span class="st"> </span><span class="kw">yadirGetForecast2</span>(<span class="dt">Phrases =</span> <span class="kw">c</span>(<span class="st">&#39;купить смартфон -xiaomi&#39;</span>, </a>
-<a class="sourceLine" id="cb7-20" title="20">                                         <span class="st">&#39;купить xiaomi&#39;</span>,</a>
-<a class="sourceLine" id="cb7-21" title="21">                                         <span class="st">&#39;самсунг -(серого цвета)&#39;</span>),</a>
-<a class="sourceLine" id="cb7-22" title="22">                             <span class="dt">GeoID   =</span> <span class="kw">c</span>(regions<span class="op">$</span>GeoRegionId, minus_regions<span class="op">$</span>GeoRegionId),</a>
-<a class="sourceLine" id="cb7-23" title="23">                             <span class="dt">AuctionBids =</span> <span class="st">&#39;Yes&#39;</span>,</a>
-<a class="sourceLine" id="cb7-24" title="24">                             <span class="dt">Login   =</span> <span class="st">&quot;selesnow&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">library</span>(dplyr)</span>
+<span id="cb7-2"><a href="#cb7-2"></a></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="co"># запрашиваем справочник регионов</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>regions &lt;-<span class="st"> </span><span class="kw">yadirGetDictionary</span>(<span class="dt">Login =</span> <span class="st">&quot;selesnow&quot;</span>)</span>
+<span id="cb7-5"><a href="#cb7-5"></a></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="co"># получаем идентификатор России</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a>regions &lt;-<span class="st"> </span>regions <span class="op">%&gt;%</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="st">  </span><span class="kw">filter</span>(GeoRegionName <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Россия&quot;</span>))</span>
+<span id="cb7-9"><a href="#cb7-9"></a></span>
+<span id="cb7-10"><a href="#cb7-10"></a><span class="co"># получаем идентификатор минус регионов и помечаем их минусом</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a>minus_regions &lt;-<span class="st"> </span>regions <span class="op">%&gt;%</span></span>
+<span id="cb7-12"><a href="#cb7-12"></a><span class="st">  </span><span class="kw">filter</span>(GeoRegionName <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Москва&quot;</span>,</span>
+<span id="cb7-13"><a href="#cb7-13"></a>                              <span class="st">&quot;Санкт-Петербург&quot;</span>,</span>
+<span id="cb7-14"><a href="#cb7-14"></a>                              <span class="st">&quot;Екатеринбург&quot;</span>,</span>
+<span id="cb7-15"><a href="#cb7-15"></a>                              <span class="st">&quot;Владивосток&quot;</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb7-16"><a href="#cb7-16"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">GeoRegionId =</span> <span class="kw">paste0</span>(<span class="st">&quot;-&quot;</span>, GeoRegionId))</span>
+<span id="cb7-17"><a href="#cb7-17"></a></span>
+<span id="cb7-18"><a href="#cb7-18"></a><span class="co"># запрашиваем прогноз с результататми торгов</span></span>
+<span id="cb7-19"><a href="#cb7-19"></a>forecast &lt;-<span class="st"> </span><span class="kw">yadirGetForecast2</span>(<span class="dt">Phrases =</span> <span class="kw">c</span>(<span class="st">&#39;купить смартфон -xiaomi&#39;</span>, </span>
+<span id="cb7-20"><a href="#cb7-20"></a>                                         <span class="st">&#39;купить xiaomi&#39;</span>,</span>
+<span id="cb7-21"><a href="#cb7-21"></a>                                         <span class="st">&#39;самсунг -(серого цвета)&#39;</span>),</span>
+<span id="cb7-22"><a href="#cb7-22"></a>                             <span class="dt">GeoID   =</span> <span class="kw">c</span>(regions<span class="op">$</span>GeoRegionId, minus_regions<span class="op">$</span>GeoRegionId),</span>
+<span id="cb7-23"><a href="#cb7-23"></a>                             <span class="dt">AuctionBids =</span> <span class="st">&#39;Yes&#39;</span>,</span>
+<span id="cb7-24"><a href="#cb7-24"></a>                             <span class="dt">Login   =</span> <span class="st">&quot;selesnow&quot;</span>)</span></code></pre></div>
 <p>В результате в объекте <em>forecast</em> будет список из двух таблиц: * PhrasesForecast - Таблица прогноза в разреще всех указанных фраз * CommonForecast - Общий суммарный прогноз</p>
 <p>Обратится к таблицам можно по имени указав его через <code>$</code> или в двойных квадратных скобках.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="co"># прогноз в разрезе фраз</span></a>
-<a class="sourceLine" id="cb8-2" title="2">forecast<span class="op">$</span>PhrasesForecast</a>
-<a class="sourceLine" id="cb8-3" title="3"></a>
-<a class="sourceLine" id="cb8-4" title="4"><span class="co"># оющий прогнох</span></a>
-<a class="sourceLine" id="cb8-5" title="5">forecast[[<span class="st">&#39;CommonForecast&#39;</span>]]</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># прогноз в разрезе фраз</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>forecast<span class="op">$</span>PhrasesForecast</span>
+<span id="cb8-3"><a href="#cb8-3"></a></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="co"># оющий прогнох</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a>forecast[[<span class="st">&#39;CommonForecast&#39;</span>]]</span></code></pre></div>
 </div>
 <div id="описание-полей-полученной-таблицы-прогнозов" class="section level2">
 <h2>Описание полей полученной таблицы прогнозов</h2>

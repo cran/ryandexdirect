@@ -18,6 +18,12 @@
 3. Управлять показами на уровне рекламных кампаний, групп объявлений и объявлений.
 4. Загружать статистику.
 5. Упаравлять ставками ключевых слов и автотаргетингов.
+6. Загружать данные о расходах, показах и кликах из Яндекс.Директ в Google Analytics.
+7. Запрашивать данные из сервиса WordStat
+8. Получить прогноз показов, кликов и трат по заданным ключевым фразам и регионам.
+
+## Видео уроки
+У `ryandexdirect` есть официальный обучающий плейлист на YouTube, все видео доступны по [ссылке](https://www.youtube.com/playlist?list=PLD2LDq8edf4oUo0L9Kw77ZXf0KcV1hu67).
 
 ## Установка пакета ryandexdirect.
 
@@ -156,8 +162,12 @@ autosetbids <- yadirSetAutoKeyWordsBids(KeywordIds = kw$Id,
 1. Загрзка статистики из API Яндекс Директ: `vignette("yandex-direct-get-statistic", package = "ryandexdirect")`
 2. Авторизация и работа с учётными данными: `vignette("yandex-direct-auth", package = "ryandexdirect")`
 3. Управление ставками ключевых слов в Яндекс Директ: `vignette("yandex-direct-keyword-bids", package = "ryandexdirect")`
+4. Загрузка данных из сервиса WordStat и построение прогноха по показам, кликам и тратам: `vignette("yandex-direct-get-wordstat-forecast", package = "ryandexdirect")`
+5. Загрузка данных о расходах, показах и кликах из Яндекс Директ в Google Analytics: `vignette("yandex-direct-cost-data", package = "ryandexdirect")`
 
 ### Статьи о пакете ryandexdirect
++ [Сравнение моделей атрибуции Директа и Метрики с помощью R](https://osipenkov.ru/attribution-direct-metrica-r/)
++ [Выгрузка данных по площадкам РСЯ в R](https://osipenkov.ru/direct-rsya-r/)
 + [ryandexdirect и выгрузка данных из Яндекс.Директ в RStudio](https://osipenkov.ru/ryandexdirect-direkt-r-step1/)
 + [Как ускорить работу с API на языке R с помощью параллельных вычислений, на примере API Яндекс.Директ (Часть 1)](https://habr.com/ru/post/437078/)
 + [Как ускорить работу с API на языке R с помощью параллельных вычислений, на примере API Яндекс.Директ (Часть 2)](https://selesnow.github.io/library/)

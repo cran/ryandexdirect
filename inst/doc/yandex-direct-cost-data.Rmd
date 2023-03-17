@@ -4,7 +4,7 @@ author: "Алексей Селезнёв"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{ryandexdirect: Загрузка данных о расходах на рекламу из Facebook в Google Analytics}
+  %\VignetteIndexEntry{ryandexdirect: Загрузка данных о расходах на рекламу из Яндекс Директ в Google Analytics}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -86,3 +86,9 @@ ga_custom_upload_file(accountId          = 2222222,
 ![Раздел "Manage Uploads"](http://img.netpeak.ua/alsey/159171178055_kiss_29kb.png)
 
 ![Статус загрузки](https://img.netpeak.ua/alsey/159057047222_kiss_16kb.png)
+
+## Где искать данные о расходах на Яндекс Директ в Google Analytics
+После загрузки в Google Analytics данные появляются не сразу, как правило должно пройти 1 - 1.5 часа.
+Найти данные о расходах можно в отчёте Анализ расходов:
+
+![Данные о расходах в Google Analytics](http://img.netpeak.ua/alsey/159178300398_kiss_26kb.png)
